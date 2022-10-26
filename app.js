@@ -31,7 +31,7 @@ if(process.env.NODE_ENV==='development'){
 }
 
 //handlebars Helpers
-const { formatDate, stripTags, truncate, editIcon} = require('./helpers/hbs')
+const { formatDate, stripTags, truncate, editIcon, select} = require('./helpers/hbs')
 
 //Handlerbars
 app.engine('.hbs', exphbs.engine({
@@ -40,6 +40,7 @@ app.engine('.hbs', exphbs.engine({
         stripTags,
         truncate,
         editIcon,
+        select
     },
     defaultLayout:'main',
     extname: '.hbs'

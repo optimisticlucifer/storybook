@@ -38,7 +38,7 @@ router.get('/', ensureAuth , async (req,res)=>{
     }
 })
 
-// @desc Show single atory
+// @desc Show single story
 // @route GET /stories/:id
 router.get('/:id', ensureAuth ,async (req,res)=>{
     try {
@@ -116,6 +116,25 @@ router.delete('/:id', ensureAuth , async (req,res)=>{
         await Story.remove({_id: req.params.id})
         res.redirect('/dashboard')
     }catch(err){
+        console.log(err)
+        res.render('error/500')
+    }
+})
+
+
+// @desc User stories
+// @route GET /stories/user/:userId
+router.get('/user/:userId', ensureAuth ,async (req,res)=>{
+    try {
+        const stories = await Story.find({
+            user: req.params.userId,
+            status: 'public'
+        }).populate('user').lean()
+
+        res.render('stories/index',{
+            stories
+        })
+    } catch (err) {
         console.log(err)
         res.render('error/500')
     }

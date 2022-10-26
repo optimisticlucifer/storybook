@@ -4,6 +4,7 @@
   "description": "App to create story",
   "main": "app.js",
   "scripts": {
+    "postinstall": "npm run build",
     "start": "cross-env NODE_ENV=production node app.js",
     "dev": "cross-env NODE_ENV=development nodemon app.js"
   },
@@ -26,5 +27,9 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.20"
+  },
+  "engines": {
+    "node": ">=16.4.2", 
+    "npm": ">=8.19.2" 
   }
 }

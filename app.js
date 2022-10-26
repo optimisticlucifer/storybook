@@ -89,7 +89,7 @@ app.use('/stories', require('./routes/stories'))
 
 
 const PORT = process.env.PORT || 5000
-
-app.listen(PORT, () => {
+const host = '0.0.0.0'
+app.listen(PORT,host, () => {
     console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 })
